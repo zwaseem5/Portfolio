@@ -3,12 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": { "node": ">=18" },
   "scripts": {
     "dev": "vite",
-  "build": "vite build",
-  "dev": "vite",
-  "preview": "vite preview --port 4173 --strictPort"
-
+    "build": "vite build",
+    "preview": "vite preview --port 4173 --strictPort"
   },
   "dependencies": {
     "i18next": "^25.3.2",
@@ -38,6 +37,7 @@
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.3",
     "unplugin-auto-import": "^19.3.0",
-     "source-map": "^0.7.6"
+    "source-map": "^0.7.6"
   }
 }
+
