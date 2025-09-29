@@ -6,7 +6,7 @@
   "engines": { "node": ">=18" },
   "scripts": {
     "dev": "vite",
-    "build": "npx vite build",
+    "build": "vite build",
     "preview": "vite preview --port 4173 --strictPort"
   },
   "dependencies": {
