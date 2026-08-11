@@ -1,10 +1,5 @@
 import { useState } from 'react';
-import CustomOSDemo from './components/CustomOSDemo';
-import WeatherAppDemo from './components/WeatherAppDemo';
-import RayTracerDemo from './components/RayTracerDemo';
 import TetrisDemo from './components/TetrisDemo';
-import MinesweeperDemo from './components/MinesweeperDemo';
-import AseelCateringDemo from './components/AseelCateringDemo';
 import TravelVistaDemo from './components/TravelVistaDemo';
 
 const categories = [
@@ -17,45 +12,6 @@ const categories = [
 
 const liveDemos = [
   {
-    id: 'custom-os',
-    title: 'MicroKernel OS',
-    language: 'C/Assembly',
-    description: 'My attempt at building an OS from scratch. Learned more about low-level programming in one semester than I thought possible. Still has bugs but hey, it boots!',
-    image: 'https://readdy.ai/api/search-image?query=Simple%20operating%20system%20terminal%20interface%20with%20basic%20commands%20student%20project%20retro%20computer%20screen%20green%20text%20on%20black%20background&width=800&height=600&seq=os002&orientation=landscape',
-    gradient: 'from-green-500 to-emerald-600',
-    bgPattern: 'bg-gray-800/50',
-    features: ['Custom Bootloader', 'Basic Memory Management', 'Simple Scheduler', 'System Calls'],
-    tech: ['C', 'Assembly', 'GRUB', 'x86'],
-    component: CustomOSDemo,
-    story: 'Took me 3 months and countless Stack Overflow searches'
-  },
-  {
-    id: 'weather-app',
-    title: 'WeatherFlow Dashboard',
-    language: 'JavaScript',
-    description: 'Made this for my web dev portfolio. Wanted something that looked professional but was actually fun to use. The animations took forever to get right.',
-    image: 'https://readdy.ai/api/search-image?query=Simple%20weather%20application%20interface%20student%20web%20development%20project%20clean%20design%20with%20weather%20icons%20and%20basic%20layout&width=800&height=600&seq=js002&orientation=landscape',
-    gradient: 'from-purple-500 to-pink-500',
-    bgPattern: 'bg-purple-900/30',
-    features: ['Real-time Data', 'Multiple Cities', 'Forecast', 'Responsive Design'],
-    tech: ['React', 'CSS3', 'APIs', 'JavaScript'],
-    component: WeatherAppDemo,
-    story: 'First project where I actually cared about making it look good'
-  },
-  {
-    id: 'raytracer',
-    title: 'RayTrace Engine',
-    language: 'Rust',
-    description: 'Graphics programming project that nearly broke my brain. Rust made it even harder but I wanted to learn something new. The math behind ray tracing is beautiful.',
-    image: 'https://readdy.ai/api/search-image?query=Simple%20ray%20tracing%20graphics%20programming%20interface%20student%20project%20basic%203D%20rendering%20with%20spheres%20and%20lighting%20controls&width=800&height=600&seq=rust002&orientation=landscape',
-    gradient: 'from-orange-500 to-red-500',
-    bgPattern: 'bg-red-900/30',
-    features: ['Ray Tracing', 'Material System', 'Lighting', 'Real-time Rendering'],
-    tech: ['Rust', 'Linear Algebra', 'Graphics', 'Math'],
-    component: RayTracerDemo,
-    story: 'Took a computer graphics course and got obsessed with rendering'
-  },
-  {
     id: 'tetris-game',
     title: 'Classic Tetris',
     language: 'JavaScript',
@@ -67,32 +23,6 @@ const liveDemos = [
     tech: ['JavaScript', 'Canvas', 'Game Logic', 'CSS'],
     component: TetrisDemo,
     story: 'Built this for my highschool CS create task'
-  },
-  {
-    id: 'minesweeper-game',
-    title: 'Minesweeper Clone',
-    language: 'JavaScript',
-    description: 'Nostalgia project - wanted to recreate the Windows classic. Added my own twist with different difficulty levels and a cleaner interface.',
-    image: 'https://readdy.ai/api/search-image?query=Simple%20minesweeper%20game%20interface%20student%20programming%20project%20classic%20puzzle%20game%20grid%20layout%20basic%20design&width=800&height=600&seq=mines002&orientation=landscape',
-    gradient: 'from-green-500 to-teal-500',
-    bgPattern: 'bg-green-900/30',
-    features: ['Multiple Difficulties', 'Flag System', 'Timer', 'Auto-reveal'],
-    tech: ['JavaScript', 'DOM', 'Game Logic', 'CSS'],
-    component: MinesweeperDemo,
-    story: 'Spent hours playing the original instead of coding this'
-  },
-  {
-    id: 'aseel-catering',
-    title: 'Aseel Catering Site',
-    language: 'React',
-    description: 'Built this for a local Middle Eastern restaurant. They needed something simple but professional. Learned a lot about working with real clients and their feedback.',
-    image: 'https://readdy.ai/api/search-image?query=Simple%20restaurant%20website%20interface%20student%20web%20development%20project%20Middle%20Eastern%20food%20menu%20basic%20professional%20design&width=800&height=600&seq=aseel002&orientation=landscape',
-    gradient: 'from-orange-500 to-red-500',
-    bgPattern: 'bg-orange-900/30',
-    features: ['Menu Display', 'Order System', 'Contact Forms', 'Mobile Friendly'],
-    tech: ['React', 'TypeScript', 'CSS', 'Forms'],
-    component: AseelCateringDemo,
-    story: 'A demo I created for my moms catering company, still working on refining this and making it come to life'
   },
   {
     id: 'travel-vista',
