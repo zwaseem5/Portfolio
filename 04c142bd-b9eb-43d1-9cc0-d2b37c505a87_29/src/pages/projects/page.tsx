@@ -157,7 +157,7 @@ const softwareProjects = [
     title: 'Unreal Engine Experiments',
     category: 'Software Projects',
     language: 'C++/Blueprint',
-    description: 'Been experimenting with Unreal Engine 5 for game development. Working on understanding the engine architecture and creating interactive experiences. Still learning but making progress!',
+    description: "Learning Unreal Engine 5 by just building stuff in it — figuring out the engine architecture, blueprint scripting, and how to put together a scene that's actually interactive instead of just a static level.",
     image: 'https://img.youtube.com/vi/K4imcxkQPXI/maxresdefault.jpg',
     gradient: 'from-blue-500 to-purple-500',
     bgPattern: 'bg-blue-900/30',
@@ -173,7 +173,7 @@ const softwareProjects = [
     title: 'CCI - Unity Development',
     category: 'Software Projects',
     language: 'C#/Unity',
-    description: 'Working on Unity projects for the California Cybersecurity Institute at Cal Poly. Developing interactive cybersecurity training simulations and educational tools. Great experience working with a professional team!',
+    description: 'Building Unity simulations at the California Cybersecurity Institute at Cal Poly — interactive tools used for actual cybersecurity training, not just a class project. First time working as part of a real dev team instead of solo.',
     image: 'https://img.youtube.com/vi/_bNoLPlwsYo/maxresdefault.jpg',
     gradient: 'from-purple-500 to-indigo-500',
     bgPattern: 'bg-purple-900/30',
@@ -182,7 +182,22 @@ const softwareProjects = [
     videoUrl: 'https://youtu.be/_bNoLPlwsYo',
     videoId: '_bNoLPlwsYo',
     isVideo: true,
-    story: 'Current work at Cal Poly - learning so much from the team'
+    story: 'Current work at Cal Poly - learning a ton from the team'
+  },
+  {
+    id: 'audio-plugin-tool',
+    title: 'Audio Plugin Tool',
+    category: 'Software Projects',
+    language: 'C++/JUCE',
+    description: "A VST3 and standalone audio effects plugin built with JUCE — gain, filtering, tremolo, and a 16-band vocoder that tracks pitch in real time and can snap it to a musical key. There's also a tanh-based clipper so the output physically can't exceed 0 dBFS. Backed it with a full test suite that renders real audio through the plugin and checks the DSP math with FFT analysis, not just that the code runs.",
+    image: '/images/audio-plugin-tool.png',
+    gradient: 'from-teal-500 to-cyan-600',
+    bgPattern: 'bg-teal-900/30',
+    features: ['Real-Time Vocoder', 'Pitch Tracking', 'VST3 + Standalone', 'C++ & Python Test Suite'],
+    tech: ['C++20', 'JUCE', 'CMake', 'Python'],
+    githubUrl: 'https://github.com/zwaseem5/AudioPluginTool',
+    isVideo: false,
+    story: "Wanted to actually understand DSP instead of just using someone else's plugin"
   }
 ];
 
@@ -334,34 +349,59 @@ export default function Projects() {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-contain object-center group-hover:opacity-0 transition-opacity duration-500"
+                    className={`w-full h-full object-contain object-center transition-opacity duration-500 ${project.isVideo ? 'group-hover:opacity-0' : ''}`}
                   />
-                  <iframe
-                    src={`https://www.youtube.com/embed/${project.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${project.videoId}`}
-                    className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                  />
+                  {project.isVideo && (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${project.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${project.videoId}`}
+                      className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      allow="autoplay; encrypted-media"
+                      allowFullScreen
+                    />
+                  )}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
                   <span className="inline-block px-3 py-1 bg-red-600 text-white text-xs rounded-full font-medium">
                     {project.category}
                   </span>
-                  <a
-                    href={project.videoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-2 inline-block px-3 py-1 bg-white text-black text-xs rounded-full hover:bg-red-600 hover:text-white transition-all duration-300 font-medium"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <i className="ri-play-line mr-1"></i>
-                    Watch Full Video
-                  </a>
+                  {project.videoUrl && (
+                    <a
+                      href={project.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-block px-3 py-1 bg-white text-black text-xs rounded-full hover:bg-red-600 hover:text-white transition-all duration-300 font-medium"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <i className="ri-play-line mr-1"></i>
+                      Watch Full Video
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-block px-3 py-1 bg-white text-black text-xs rounded-full hover:bg-red-600 hover:text-white transition-all duration-300 font-medium"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <i className="ri-github-line mr-1"></i>
+                      View on GitHub
+                    </a>
+                  )}
                 </div>
                 <div className="absolute top-4 right-4 bg-black/70 text-white px-2 py-1 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <i className="ri-play-circle-line mr-1"></i>
-                  Hover to Preview
+                  {project.isVideo ? (
+                    <>
+                      <i className="ri-play-circle-line mr-1"></i>
+                      Hover to Preview
+                    </>
+                  ) : (
+                    <>
+                      <i className="ri-code-line mr-1"></i>
+                      View Details
+                    </>
+                  )}
                 </div>
               </div>
               <div className="space-y-2 px-2">
@@ -602,6 +642,17 @@ export default function Projects() {
                     >
                       <i className="ri-video-line mr-2"></i>
                       Watch Video
+                    </a>
+                  )}
+                  {selectedSoftwareProject.githubUrl && (
+                    <a
+                      href={selectedSoftwareProject.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`px-6 py-3 bg-gradient-to-r ${selectedSoftwareProject.gradient} text-white rounded-full transition-all duration-300 cursor-pointer font-medium whitespace-nowrap hover:scale-105 transform`}
+                    >
+                      <i className="ri-github-line mr-2"></i>
+                      View on GitHub
                     </a>
                   )}
                   <a
