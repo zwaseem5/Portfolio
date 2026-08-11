@@ -14,8 +14,8 @@ const liveDemos = [
     id: 'tetris-game',
     title: 'Classic Tetris',
     language: 'JavaScript',
-    description: 'Everyone needs to build Tetris at least once, right? Kept it simple but made sure the game feel was just right. Surprisingly tricky to get the rotation logic perfect.',
-    image: 'https://readdy.ai/api/search-image?query=Simple%20tetris%20game%20interface%20student%20programming%20project%20classic%20block%20puzzle%20game%20basic%20colorful%20design&width=800&height=600&seq=tetris002&orientation=landscape',
+    description: "Everyone builds Tetris at some point, so here's mine. Kept the board minimal on purpose — the actual work was getting piece rotation and collision to feel right, not the visuals.",
+    image: '/images/tetris-demo.png',
     gradient: 'from-cyan-500 to-blue-500',
     bgPattern: 'bg-blue-900/30',
     features: ['Classic Gameplay', 'Score Tracking', 'Level System', 'Smooth Controls'],
@@ -27,8 +27,8 @@ const liveDemos = [
     id: 'travel-vista',
     title: 'Travel Vista Site',
     language: 'React',
-    description: 'Travel booking website with destination packages and booking system. Clean design focused on showcasing beautiful travel destinations and making booking simple.',
-    image: 'https://readdy.ai/api/search-image?query=Simple%20travel%20website%20interface%20with%20destination%20packages%20booking%20system%20clean%20professional%20design%20travel%20agency&width=800&height=600&seq=travel002&orientation=landscape',
+    description: "A mock travel booking site — destination browsing, package details, a booking flow. Built it to practice putting together a full multi-page site instead of a single component.",
+    image: '/images/travel-vista-demo.png',
     gradient: 'from-blue-500 to-teal-500',
     bgPattern: 'bg-blue-900/30',
     features: ['Destination Packages', 'Booking System', 'Testimonials', 'Responsive Design'],
@@ -265,7 +265,7 @@ export default function Projects() {
             Software Live Demos
           </h2>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-            Interactive demos of projects I've built during my studies. Click to try them out!
+            A couple of things I built that actually run in the browser — click a card to play with them.
           </p>
         </div>
 
