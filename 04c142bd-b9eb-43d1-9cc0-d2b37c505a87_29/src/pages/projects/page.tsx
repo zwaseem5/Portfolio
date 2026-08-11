@@ -6,8 +6,7 @@ const categories = [
   'All',
   'Digital Art',
   'Software Projects',
-  'Software Live Demos',
-  'Paper Work'
+  'Software Live Demos'
 ];
 
 const liveDemos = [
@@ -150,133 +149,6 @@ const projects = [
     description: 'Interactive dashboard application featuring real-time data visualization and user interface components built with modern web technologies',
     demoUrl: 'https://calpoly-dxhub.slack.com/files/U091CQ69LKA/F09B8RUBA21/screen_recording_2025-08-20_at_1.33.48___pm.mov'
   },
-  {
-    id: 15,
-    title: 'Digital Portrait Art',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1f5fPwsKr2p98HxQT12lU2jryXwm8S0s_',
-    description: 'Original digital portrait showcasing character design and artistic vision'
-  },
-  {
-    id: 16,
-    title: 'Fantasy Character Design',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/17FFU-9AvdjH1O37dgUlMajkrW11LiRc-',
-    description: 'Fantasy character artwork with detailed design and creative storytelling'
-  },
-  {
-    id: 17,
-    title: 'Abstract Digital Art',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/17Sf2NIsxeSRHtCrFstr-e3iunSNaUAuh',
-    description: 'Abstract digital composition exploring color, form, and visual harmony'
-  },
-  {
-    id: 18,
-    title: 'Concept Art Design',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/18eyDNP8r78WCWvbj3PrS795fJqulSbRD',
-    description: 'Original concept art showcasing creative world-building and design'
-  },
-  {
-    id: 19,
-    title: 'Digital Illustration',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/18ysKVoKYNOwGq5c1fWpZAjqzg28XkKKW',
-    description: 'Detailed digital illustration with intricate design elements'
-  },
-  {
-    id: 20,
-    title: 'Character Portrait Study',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1ApVhfA2ovOvl2a0ndO50av4Ffsh9yWiW',
-    description: 'Character portrait study focusing on expression and personality'
-  },
-  {
-    id: 21,
-    title: 'Artistic Digital Composition',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1JJqqw8aNho9qH5Myzq-k4r_XukwDhML4',
-    description: 'Creative digital composition blending artistic techniques and imagination'
-  },
-  {
-    id: 22,
-    title: 'Fantasy Landscape Art',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1NCkPVuXKwlsyreC7SKwknJ9XiPV0fUqM',
-    description: 'Fantasy landscape artwork with atmospheric lighting and creative design'
-  },
-  {
-    id: 23,
-    title: 'Digital Art Exploration',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1OlQLJhnJAJItDjMTjuXSB3ccxvVvp3Mc',
-    description: 'Experimental digital art exploring new techniques and visual styles'
-  },
-  {
-    id: 24,
-    title: 'Creative Character Design',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1P3z3mfh0hpz_LFGM-rOtoUKv2FsUTnIV',
-    description: 'Unique character design showcasing creativity and artistic skill'
-  },
-  {
-    id: 25,
-    title: 'Digital Artwork Study',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1PRyQ53JpOKW8Z4dIty3oRWDnGx0lfzP-',
-    description: 'Digital artwork study focusing on technique and artistic expression'
-  },
-  {
-    id: 26,
-    title: 'Imaginative Digital Art',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1S5mW6ace5V7dd_n8YwNbnUE9FV35tQYL',
-    description: 'Imaginative digital artwork with creative storytelling elements'
-  },
-  {
-    id: 27,
-    title: 'Stylized Character Art',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1UT5CpoIxAP5_V2smmIAkRX0JSPd8HzxS',
-    description: 'Stylized character artwork with unique design and visual appeal',
-    rotation: 'rotate-90'
-  },
-  {
-    id: 28,
-    title: 'Digital Visual Art',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1X42GWmP7JX_h7R5uvHT-QvUt04A6Z6-k',
-    description: 'Digital visual art piece showcasing artistic vision and technical skill'
-  },
-  {
-    id: 29,
-    title: 'Creative Digital Design',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1YPwfU4BzVlA63fkJgLCTXjxF_wfsL-W_',
-    description: 'Creative digital design with innovative visual elements'
-  },
-  {
-    id: 31,
-    title: 'Digital Art Masterpiece',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1gS1GYNsKWmhV8yE11RpwvBzbmL5mJwXt',
-    description: 'Digital art masterpiece showcasing advanced artistic techniques'
-  },
-  {
-    id: 32,
-    title: 'Fantasy Art Creation',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1goXnJJuNgn4Yin00y_lDaHDbs5wvJKx0',
-    description: 'Fantasy art creation with magical elements and creative world-building'
-  },
-  {
-    id: 33,
-    title: 'Digital Portrait Mastery',
-    category: 'Paper Work',
-    image: 'https://lh3.googleusercontent.com/d/1snEECPsafJsNqMOr9MlfHGHB3xFI6AQ-',
-    description: 'Digital portrait demonstrating mastery of light, shadow, and character'
-  }
 ];
 
 const softwareProjects = [
