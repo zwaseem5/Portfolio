@@ -66,18 +66,19 @@ export default function TetrisDemo() {
     return rotated;
   }, []);
 
-  const placePiece = useCallback(() => {
-    if (!currentPiece) return;
+  const placePiece = useCallback((pieceToPlace) => {
+    const piece = pieceToPlace || currentPiece;
+    if (!piece) return;
 
     const newBoard = board.map(row => [...row]);
-    
-    for (let y = 0; y < currentPiece.shape.length; y++) {
-      for (let x = 0; x < currentPiece.shape[y].length; x++) {
-        if (currentPiece.shape[y][x]) {
-          const boardY = currentPiece.y + y;
-          const boardX = currentPiece.x + x;
+
+    for (let y = 0; y < piece.shape.length; y++) {
+      for (let x = 0; x < piece.shape[y].length; x++) {
+        if (piece.shape[y][x]) {
+          const boardY = piece.y + y;
+          const boardX = piece.x + x;
           if (boardY >= 0) {
-            newBoard[boardY][boardX] = currentPiece.color;
+            newBoard[boardY][boardX] = piece.color;
           }
         }
       }
@@ -139,8 +140,7 @@ export default function TetrisDemo() {
     while (isValidMove(currentPiece, currentPiece.x, newY + 1)) {
       newY++;
     }
-    setCurrentPiece(prev => ({ ...prev, y: newY }));
-    setTimeout(placePiece, 100);
+    placePiece({ ...currentPiece, y: newY });
   }, [currentPiece, gameOver, isPaused, isValidMove, placePiece]);
 
   const startGame = () => {
@@ -231,9 +231,9 @@ export default function TetrisDemo() {
         {row.map((cell, x) => (
           <div
             key={x}
-            className="w-6 h-6 border border-gray-600"
+            className="w-6 h-6 border border-zinc-800"
             style={{
-              backgroundColor: cell === EMPTY_CELL ? '#1a1a1a' : cell,
+              backgroundColor: cell === EMPTY_CELL ? '#111113' : cell,
               boxShadow: cell !== EMPTY_CELL ? 'inset 0 0 0 1px rgba(255,255,255,0.3)' : 'none'
             }}
           />
@@ -261,30 +261,28 @@ export default function TetrisDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-900 via-blue-900 to-purple-900 text-white p-6">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 p-6 font-mono">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            Minimal Tetris
-          </h1>
-          <p className="text-gray-300">Classic block-stacking puzzle game</p>
+          <h1 className="text-2xl font-bold mb-1 text-white">Minimal Tetris</h1>
+          <p className="text-zinc-500 text-sm">Classic block-stacking puzzle game</p>
         </div>
 
         <div className="flex justify-center items-start gap-8">
           {/* Game Board */}
-          <div className="bg-black/30 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6">
-            <div className="bg-black/50 p-4 rounded-lg">
+          <div className="relative bg-zinc-900 border border-zinc-800 rounded-md p-6">
+            <div className="bg-black p-3 rounded border border-zinc-800">
               {renderBoard()}
             </div>
-            
+
             {gameOver && (
-              <div className="absolute inset-0 bg-black/80 flex items-center justify-center rounded-2xl">
+              <div className="absolute inset-0 bg-black/90 flex items-center justify-center rounded-md">
                 <div className="text-center">
-                  <h3 className="text-3xl font-bold text-red-400 mb-4">Game Over!</h3>
-                  <p className="text-gray-300 mb-4">Final Score: {score}</p>
+                  <h3 className="text-2xl font-bold text-red-400 mb-3">Game Over</h3>
+                  <p className="text-zinc-400 mb-4">Final Score: {score}</p>
                   <button
                     onClick={startGame}
-                    className="px-6 py-3 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-lg font-semibold hover:from-cyan-500 hover:to-purple-500 transition-all duration-300 whitespace-nowrap"
+                    className="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 rounded font-semibold transition-colors duration-150 whitespace-nowrap"
                   >
                     Play Again
                   </button>
@@ -293,12 +291,12 @@ export default function TetrisDemo() {
             )}
 
             {isPaused && !gameOver && (
-              <div className="absolute inset-0 bg-black/80 flex items-center justify-center rounded-2xl">
+              <div className="absolute inset-0 bg-black/90 flex items-center justify-center rounded-md">
                 <div className="text-center">
-                  <h3 className="text-3xl font-bold text-yellow-400 mb-4">Paused</h3>
+                  <h3 className="text-2xl font-bold text-yellow-400 mb-3">Paused</h3>
                   <button
                     onClick={togglePause}
-                    className="px-6 py-3 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-lg font-semibold hover:from-cyan-500 hover:to-purple-500 transition-all duration-300 whitespace-nowrap"
+                    className="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 rounded font-semibold transition-colors duration-150 whitespace-nowrap"
                   >
                     Resume
                   </button>
@@ -308,67 +306,67 @@ export default function TetrisDemo() {
           </div>
 
           {/* Game Info */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* Score */}
-            <div className="bg-black/30 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 min-w-[200px]">
-              <h3 className="text-lg font-bold mb-4 text-cyan-300">Score</h3>
-              <div className="space-y-2">
+            <div className="bg-zinc-900 border border-zinc-800 rounded-md p-5 min-w-[200px]">
+              <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Score</h3>
+              <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Score:</span>
+                  <span className="text-zinc-500">Score</span>
                   <span className="text-white font-bold">{score.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Level:</span>
+                  <span className="text-zinc-500">Level</span>
                   <span className="text-white font-bold">{level}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Lines:</span>
+                  <span className="text-zinc-500">Lines</span>
                   <span className="text-white font-bold">{lines}</span>
                 </div>
               </div>
             </div>
 
             {/* Next Piece */}
-            <div className="bg-black/30 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6">
-              <h3 className="text-lg font-bold mb-4 text-cyan-300">Next</h3>
-              <div className="bg-black/50 p-4 rounded-lg">
+            <div className="bg-zinc-900 border border-zinc-800 rounded-md p-5">
+              <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Next</h3>
+              <div className="bg-black p-3 rounded border border-zinc-800">
                 {renderNextPiece()}
               </div>
             </div>
 
             {/* Controls */}
-            <div className="bg-black/30 backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6">
-              <h3 className="text-lg font-bold mb-4 text-cyan-300">Controls</h3>
+            <div className="bg-zinc-900 border border-zinc-800 rounded-md p-5">
+              <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">Controls</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Move:</span>
-                  <span className="text-white">← →</span>
+                  <span className="text-zinc-500">Move</span>
+                  <span className="text-zinc-200">← →</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Rotate:</span>
-                  <span className="text-white">↑</span>
+                  <span className="text-zinc-500">Rotate</span>
+                  <span className="text-zinc-200">↑</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Soft Drop:</span>
-                  <span className="text-white">↓</span>
+                  <span className="text-zinc-500">Soft Drop</span>
+                  <span className="text-zinc-200">↓</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Hard Drop:</span>
-                  <span className="text-white">Space</span>
+                  <span className="text-zinc-500">Hard Drop</span>
+                  <span className="text-zinc-200">Space</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Pause:</span>
-                  <span className="text-white">P</span>
+                  <span className="text-zinc-500">Pause</span>
+                  <span className="text-zinc-200">P</span>
                 </div>
               </div>
             </div>
 
             {/* Game Controls */}
-            <div className="space-y-3">
+            <div className="space-y-2">
               {!gameStarted ? (
                 <button
                   onClick={startGame}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-lg font-semibold hover:from-cyan-500 hover:to-purple-500 transition-all duration-300 whitespace-nowrap"
+                  className="w-full px-6 py-2.5 bg-cyan-600 hover:bg-cyan-500 rounded font-semibold transition-colors duration-150 whitespace-nowrap"
                 >
                   <i className="ri-play-line mr-2"></i>
                   Start Game
@@ -377,14 +375,14 @@ export default function TetrisDemo() {
                 <>
                   <button
                     onClick={togglePause}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-yellow-600 to-orange-600 rounded-lg font-semibold hover:from-yellow-500 hover:to-orange-500 transition-all duration-300 whitespace-nowrap"
+                    className="w-full px-6 py-2.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded font-semibold transition-colors duration-150 whitespace-nowrap"
                   >
                     <i className={`${isPaused ? 'ri-play-line' : 'ri-pause-line'} mr-2`}></i>
                     {isPaused ? 'Resume' : 'Pause'}
                   </button>
                   <button
                     onClick={startGame}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-red-600 to-pink-600 rounded-lg font-semibold hover:from-red-500 hover:to-pink-500 transition-all duration-300 whitespace-nowrap"
+                    className="w-full px-6 py-2.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-red-400 hover:text-red-300 rounded font-semibold transition-colors duration-150 whitespace-nowrap"
                   >
                     <i className="ri-restart-line mr-2"></i>
                     Restart
